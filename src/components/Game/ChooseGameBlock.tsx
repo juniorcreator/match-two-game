@@ -27,10 +27,12 @@ const ChooseGameBlock = () => {
         <ul className="p-1 w-32 flex justify-center items-center gap-2">
           {elements.map((item) => (
             <li
-                onPointerDown={async () => {
-                  resetSound(songs.switch);
-                  await songs.switch.play();
+                onPointerDown={() => {
                   store.setItemContent(item.name);
+                  resetSound(songs.switch);
+                  songs.switch.pause();
+                  songs.switch.currentTime = 0;
+                  songs.switch.play();
                 }}
               className={
                 `elements-list text-white p-2 flex flex-col items-center min-w-[100px] border-1 mb-1 rounded-sm text-white px-2 p-1 text-sm cursor-pointer hover:scale-105 transition duration-300 backdrop-blur ${item.name === store.selectedContentType && 'active'}`
