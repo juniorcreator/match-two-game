@@ -11,7 +11,7 @@ const BtnNextLvl = () => {
                text-white font-semibold shadow-lg hover:scale-105
                hover:shadow-xl transition duration-300 backdrop-blur
                border border-white/20"
-                        onClick={store.updateCurrentLevel}
+                        onPointerDown={store.updateCurrentLevel}
                     >
                         Next level lvl
                     </button>

@@ -6,13 +6,13 @@ const PlayPauseIcon = ({isPlaying, handlePause, handlePlay}) => {
         <div className="relative z-10">
             {isPlaying ? (
                 <PauseCircleIcon
-                    onClick={handlePause}
+                    onPointerDown={handlePause}
                     sx={{fontSize: 30}}
                     className="cursor-pointer text-white"
                 />
             ) : (
                 <NotStartedIcon
-                    onClick={handlePlay}
+                    onPointerDown={handlePlay}
                     sx={{fontSize: 30}}
                     className="cursor-pointer text-white"
                 />

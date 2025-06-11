@@ -12,7 +12,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
       {items.map((item, index) => (
         <li
           key={index}
-          onClick={() => onItemClick(index)}
+          onPointerDown={() => onItemClick(index)}
           className={`list-item flip-card ${item.active ? "active" : ""} ${
             !item.clickable ? "notClickable" : ""
           }`}

@@ -25,6 +25,11 @@ const Game = () => {
   } = useGameLogic(songs);
 
   useEffect(canvas, []);
+    useEffect(() => {
+        Object.values(songs).forEach((sound) => {
+            sound.load(); // load
+        });
+    }, []);
   console.log("rendered");
   return (
     <>

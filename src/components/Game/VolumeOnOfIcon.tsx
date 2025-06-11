@@ -6,13 +6,13 @@ const VolumeOnOfIcon = ({volume, handleVolumeOff, handleVolumeOn}) => {
         <div className="absolute z-10 right-3 top-3">
             {volume ? (
                 <VolumeOffIcon
-                    onClick={handleVolumeOff}
+                    onPointerDown={handleVolumeOff}
                     sx={{fontSize: 30}}
                     className="cursor-pointer text-white"
                 />
             ) : (
                 <VolumeMuteIcon
-                    onClick={handleVolumeOn}
+                    onPointerDown={handleVolumeOn}
                     sx={{fontSize: 30}}
                     className="cursor-pointer text-white"
                 />

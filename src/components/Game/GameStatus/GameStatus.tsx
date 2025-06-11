@@ -10,7 +10,7 @@ const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {
     <div className="game-status absolute left-0 top-0 w-full h-full">
       <div className="h-full flex justify-center items-center">
         <div
-          onClick={() => {
+            onPointerDown={() => {
             store.setStartGame(true);
             onStartGame();
           }}
@@ -25,7 +25,7 @@ const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {
     <div className="game-status absolute left-0 top-0 w-full h-full">
       <div className="h-full flex justify-center items-center">
         <div
-          onClick={onTimeIsUp}
+            onPointerDown={onTimeIsUp}
           className="game-status-btn cursor-pointer bg-blue-400/50 p-3 text-white hover:scale-105 transition duration-300 backdrop-blur"
         >
           Time is up, restart?
@@ -37,7 +37,7 @@ const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {
     <div className="game-status absolute left-0 top-0 w-full h-full">
       <div className="h-full flex flex-col justify-center items-center">
         <div
-          onClick={() => {
+            onPointerDown={() => {
             onWinLvl();
           }}
           className="game-status-btn cursor-pointer bg-blue-400/50 p-3 text-white hover:scale-105 transition duration-300 backdrop-blur"
@@ -52,7 +52,7 @@ const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {
       <div className="h-full flex justify-center items-center">
         <VictoryCelebration />
         <div
-          onClick={() => {
+            onPointerDown={() => {
             onResetGame();
           }}
           className="game-status-btn cursor-pointer bg-blue-400/50 p-3 text-white hover:scale-105 transition duration-300 backdrop-blur"
@@ -66,7 +66,7 @@ const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {
     <div className="game-status absolute left-0 top-0 w-full h-full">
       <div className="h-full flex justify-center items-center">
         <div
-          onClick={() => {
+            onPointerDown={() => {
             // store.setStartGame(false);
           }}
           className="game-status-btn cursor-pointer bg-blue-400/50 p-3 text-white hover:scale-105 transition duration-300 backdrop-blur"

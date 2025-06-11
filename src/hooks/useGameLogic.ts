@@ -74,15 +74,14 @@ export const useGameLogic = (songs: any) => {
               clearInterval(timers.current.timerInterval);
 
               setTimeout(() => {
-                store.setIsFinishedLvl(true);
-                store.setShowNextLevel(true);
-
                 //before congrats play
                 resetSound(songs.match);
                 resetSound(songs.open);
                 resetSound(songs.close);
                 //before congrats play
                 songs.congrats.play();
+                store.setIsFinishedLvl(true);
+                store.setShowNextLevel(true);
                 const currentLevel = store.updateCurrentLevel();
                 secondElementRef.current!.textContent = String(
                   formatTime(initTime + currentLevel * 15),
@@ -100,14 +99,16 @@ export const useGameLogic = (songs: any) => {
 
           resetSelected();
         } else { // not finished lvl and not match
-          setBlocked(true);
           //songs
           resetSound(songs.close);
           resetSound(songs.match);
           await songs.open.play();
           //songs
+          setBlocked(true);
           clearTimeout(timers.current.timeoutNotMatch);
-          timers.current.timeoutNotMatch = setTimeout(() => {
+          timers.current.timeoutNotMatch = setTimeout(async () => {
+            await songs.close.play();
+
             const updatedItems = [...newItems];
             updatedItems[first.index] = {
               ...updatedItems[first.index],
@@ -121,7 +122,6 @@ export const useGameLogic = (songs: any) => {
             };
             setItems(updatedItems);
             resetSelected();
-            songs.close.play();
             setBlocked(false);
           }, 500);
         }
