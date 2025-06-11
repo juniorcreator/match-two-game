@@ -2,7 +2,7 @@ import { create } from "zustand";
 import type { Item, Levels } from "../types";
 import { generateGameLevels } from "../utils";
 
-const maxLevels = 12;
+const maxLevels = 2;
 
 type State = {
   currentLevel: number;
@@ -13,7 +13,6 @@ type State = {
   health: number;
   isGameStarted: boolean;
   isGameOver: boolean;
-  timerInterval: null | number;
   isTimeIsUp: boolean;
   isWinGame: boolean;
   maxLevels: number;
@@ -34,6 +33,7 @@ type Action = {
   setShowNextLevel: (value: boolean) => void;
   resetCurrentLevel: () => void;
   resetLvlData: () => void;
+  updateLvlData: (lvlData: Levels[]) => void;
 };
 
 const useGameStore = create<State & Action>((set, get) => ({
@@ -45,7 +45,6 @@ const useGameStore = create<State & Action>((set, get) => ({
   isGameOver: false,
   isTimeIsUp: false,
   isWinGame: false,
-  timerInterval: null,
   showNextLevel: false,
   health: 3,
   gameLevels: generateGameLevels(maxLevels, "numbers"),
@@ -60,9 +59,6 @@ const useGameStore = create<State & Action>((set, get) => ({
   updateCurrentLevel: () => {
     const level = get().currentLevel;
     set({ currentLevel: Math.min(level + 1, get().gameLevels.length - 1) });
-    // set({ isFinishedLvl: false });
-    // console.log(get().gameLevels, " gameLevels");
-    // console.log(get().currentLevel, " currentLevel");
     return get().currentLevel;
   },
   resetCurrentLevel: () => {
@@ -109,6 +105,9 @@ const useGameStore = create<State & Action>((set, get) => ({
         hintCount: i > 3 ? 3 : 1,
       })),
     });
+  },
+  updateLvlData: (newLvlData: Levels[]) => {
+    set({ levelData: newLvlData });
   },
 }));
 

@@ -111,7 +111,6 @@ export function generateLevel(
     };
     level.push({ ...card }, { ...card }); // пара
   }
-  // console.log('generateLevel', type, level);
   return level;
 }
 export function generateGameLevels(

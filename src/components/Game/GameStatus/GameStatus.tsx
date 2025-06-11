@@ -1,6 +1,6 @@
 import "./GameStatus.scss";
 import { createPortal } from "react-dom";
-import useGameStore from "../../store/game.ts";
+import useGameStore from "../../../store/game.ts";
 import VictoryCelebration from "../VictoryCelebration.tsx";
 
 const GameStatus = ({ onStartGame, onTimeIsUp, onWinLvl, onResetGame }) => {

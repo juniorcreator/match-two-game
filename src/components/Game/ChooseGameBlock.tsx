@@ -1,7 +1,7 @@
 import "./ChooseGameBlock.scss";
 import { useState } from "react";
-import useGameStore from "../store/game.ts";
-import {playMusic} from '../utils'
+import useGameStore from "../../store/game.ts";
+import {playMusic} from '../../utils'
 
 const songs = playMusic();
 

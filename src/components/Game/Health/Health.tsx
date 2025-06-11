@@ -1,5 +1,5 @@
 import './Health.scss';
-import useGameStore from "../../store/game.ts";
+import useGameStore from "../../../store/game.ts";
 
 const Health = () => {
     const store = useGameStore();
