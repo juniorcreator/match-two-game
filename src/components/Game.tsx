@@ -11,7 +11,7 @@ import ChooseGameBlock from "./ChooseGameBlock.tsx";
 import Health from "./Health/Health.tsx";
 import GameStatus from "./GameStatus/GameStatus.tsx";
 import FinishedLevels from "./FinishedLevels.tsx";
-import { canvas } from "../utils/canvas.tsx";
+import { canvas } from "../utils/canvas.ts";
 
 const songs = playMusic();
 songs.bgMusic.loop = true;
