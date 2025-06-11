@@ -2,9 +2,10 @@ import "./ChooseGameBlock.scss";
 import { useState } from "react";
 import useGameStore from "../../store/game.ts";
 import {playMusic} from '../../utils'
-import {resetSound} from "../../utils/soundUtils.ts";
+// import {resetSound} from "../../utils/soundUtils.ts";
 
 const songs = playMusic();
+songs.switch.load();
 songs.switch.volume = 0.3;
 
 const ChooseGameBlock = () => {
@@ -29,8 +30,6 @@ const ChooseGameBlock = () => {
             <li
                 onPointerDown={() => {
                   store.setItemContent(item.name);
-                  resetSound(songs.switch);
-                  songs.switch.pause();
                   songs.switch.currentTime = 0;
                   songs.switch.play();
                 }}
