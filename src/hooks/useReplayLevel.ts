@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { type RefObject, useCallback } from "react";
 import type { Item, Levels } from "../types";
 import useGameStore from "../store/game.ts";
 
@@ -13,15 +13,16 @@ export const useReplayLevel = ({
   items: Item[];
   levels: Levels[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
-  timers: React.MutableRefObject<{
+  timers: RefObject<{
     [key: string]: ReturnType<typeof setTimeout>;
   }>;
-  timeLeft: React.MutableRefObject<number>;
+  timeLeft: RefObject<number>;
   initTime: number;
 }) => {
   const store = useGameStore();
 
-  const handlePlayLvlAgain = useCallback(() => {
+  return useCallback(() => {
+    //handlePlayLvlAgain
     clearTimeout(timers.current.timeoutPlayAgain);
     timeLeft.current = initTime + store.currentLevel * 15;
 
@@ -47,6 +48,4 @@ export const useReplayLevel = ({
       setItems(deactivatedItems);
     }, 1500);
   }, [items, levels, setItems, store.currentLevel, timers, timeLeft, initTime]);
-
-  return handlePlayLvlAgain;
 };
