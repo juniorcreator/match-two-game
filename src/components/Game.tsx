@@ -26,7 +26,7 @@ const Game = () => {
 
   const timers = useRef<{ [key: string]: ReturnType<typeof setTimeout> }>({});
   const secondElementRef = useRef<HTMLDivElement | null>(null);
-  const timeLeft = useRef(10); // стартовое время
+  const timeLeft = useRef(15); // стартовое время
   const initTime = 15;
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -178,7 +178,7 @@ const Game = () => {
 
   function startLevel() {
     console.log(store.currentLevel, " store.currentLevel ");
-    timeLeft.current = initTime + store.currentLevel * 10; // Увеличиваем время на каждом уровне
+    timeLeft.current = initTime + store.currentLevel * 15; // Увеличиваем время на каждом уровне
 
     timers.current.timerInterval = setInterval(() => {
       if (timeLeft.current <= 0) {
